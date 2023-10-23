@@ -31,7 +31,7 @@ public class Main {
                     boolean duplicatedUserId = false;
 
                     for (int i = 0; i < memberList.size(); i++) {
-                        if (memberList.get(i).userId.equals(userId)) {
+                        if (memberList.get(i).getUserId().equals(userId)) {
                             duplicatedUserId = true;
                         }
                     }
@@ -74,7 +74,7 @@ public class Main {
                 String password = sc.nextLine();
 
                 for (int i = 0; i < memberList.size(); i++) {
-                    if (memberList.get(i).userId.equals(userId)) {
+                    if (memberList.get(i).getUserId().equals(userId)) {
                         member = memberList.get(i);
                         checkedUserId = true;
                         break;
@@ -86,14 +86,14 @@ public class Main {
                     return;
                 }
 
-                if (member.password.equals(password) == false) {
+                if (member.getPassword().equals(password) == false) {
                     System.out.println("비밀번호가 일치하지 않습니다.");
                     return;
                 }
 
                 loginedMember = member;
 
-                System.out.println("로그인 성공!" + loginedMember.userId +"님 환영합니다.");
+                System.out.println("로그인 성공!" + loginedMember.getUserId() +"님 환영합니다.");
             } else if (command.equals("등록")) {
                 lastId++;
                 System.out.printf("제목: ");
