@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -8,6 +9,7 @@ public class Main {
 
         long lastId = 0;
         List<Article> articleList = new ArrayList<>();
+        List<Member> memberList = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
 
         while (true) {
@@ -17,6 +19,43 @@ public class Main {
             if (command.equals("종료")) {
                 System.out.println("시스템을 종료합니다.");
                 break;
+            } else if (command.equals("회원가입")) {
+                String userId;
+                String password;
+                String passwordConfirm;
+
+                while (true) {
+                    System.out.printf("아이디 )");
+                    userId = sc.nextLine();
+
+                    for (int i = 0; i < memberList.size(); i++) {
+                        if (memberList.get(i).userId.equals(userId)) {
+                            System.out.println("존재하는 아이디 입니다.");
+                            continue;
+                        }
+                    }
+                    break;
+                }
+
+                while (true) {
+                    System.out.printf("비번 )");
+                    password = sc.nextLine();
+
+                    System.out.printf("비번확인 )");
+                    passwordConfirm = sc.nextLine();
+
+                    if (password.equals(passwordConfirm) == false) {
+                        System.out.println("비밀번호가 일치하지 않습니다.");
+                        continue;
+                    }
+                    break;
+                }
+
+                LocalDate now = LocalDate.now();
+
+                System.out.printf("아이디: %s, %s, %s \n", userId, password, now.toString());
+                new Member(userId, password, now.toString());
+
             } else if (command.equals("등록")) {
                 lastId++;
                 System.out.printf("제목: ");
@@ -76,7 +115,7 @@ public class Main {
                         System.out.printf("기존 내용: %s\n", article.getContent());
                         String content = sc.nextLine();
                         article.setContent(content);
-                        
+
                         break;
                     }
                 }
