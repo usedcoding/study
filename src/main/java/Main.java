@@ -25,7 +25,7 @@ public class Main {
                 String passwordConfirm;
 
                 while (true) {
-                    System.out.printf("아이디 )");
+                    System.out.printf("아이디) ");
                     userId = sc.nextLine();
 
                     for (int i = 0; i < memberList.size(); i++) {
@@ -38,10 +38,10 @@ public class Main {
                 }
 
                 while (true) {
-                    System.out.printf("비번 )");
+                    System.out.printf("비번) ");
                     password = sc.nextLine();
 
-                    System.out.printf("비번확인 )");
+                    System.out.printf("비번 확인) ");
                     passwordConfirm = sc.nextLine();
 
                     if (password.equals(passwordConfirm) == false) {
@@ -53,9 +53,10 @@ public class Main {
 
                 LocalDate now = LocalDate.now();
 
-                System.out.printf("아이디: %s, %s, %s \n", userId, password, now.toString());
-                new Member(userId, password, now.toString());
+                Member member = new Member(userId, password, now.toString());
+                memberList.add(member);
 
+                System.out.println(userId + "님 회원가입이 완료되었습니다.");
             } else if (command.equals("등록")) {
                 lastId++;
                 System.out.printf("제목: ");
