@@ -32,7 +32,11 @@ public class Main {
                 if (articleList.size() == 0) {
                     System.out.println("게시물이 없습니다.");
                 } else {
-
+                    System.out.printf("번호 / 제목 / 내용\n");
+                    for (int i = 0; i < articleList.size(); i++) {
+                        Article article = articleList.get(i);
+                        System.out.printf("%d / %s / %s\n", article.id, article.title, article.content);
+                    }
                 }
             }
         }
