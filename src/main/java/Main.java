@@ -58,8 +58,34 @@ public class Main {
                 } else {
                     System.out.println(id + "번째 게시글이 삭제 되었습니다.");
                 }
-            } else if () {
+            } else if (command.equals("수정")) {
+                System.out.printf("수정 번호) ");
+                long id = Long.parseLong(sc.nextLine());
 
+                long foundIndex = -1;
+
+                for (int i = 0; i < articleList.size(); i ++) {
+                    Article article = articleList.get(i);
+                    if (article.getId() == id) {
+                        foundIndex = id;
+
+                        System.out.printf("기존 제목: %s\n", article.getTitle());
+                        String title = sc.nextLine();
+                        article.setTitle(title);
+
+                        System.out.printf("기존 내용: %s\n", article.getContent());
+                        String content = sc.nextLine();
+                        article.setContent(content);
+                        
+                        break;
+                    }
+                }
+
+                if (foundIndex == -1) {
+                    System.out.println(id + "번째 게시물은 존재하지 않습니다.");
+                } else {
+                    System.out.println(id + "번째 게시글이 수정 되었습니다.");
+                }
             }
         }
 
