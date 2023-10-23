@@ -42,15 +42,24 @@ public class Main {
                 System.out.printf("삭제 번호) ");
                 long id = Long.parseLong(sc.nextLine());
 
+                long foundIndex = -1;
+
                 for (int i = 0; i < articleList.size(); i ++) {
                     Article article = articleList.get(i);
                     if (article.getId() == id) {
+                        foundIndex = id;
                         articleList.remove(article);
-                        System.out.println(id + "번 게시글이 삭제 되었습니다.");
-                    } else {
-                        System.out.println("일치 하는 아이디가 없습니다");
+                        break;
                     }
                 }
+
+                if (foundIndex == -1) {
+                    System.out.println(id + "번째 게시물은 존재하지 않습니다.");
+                } else {
+                    System.out.println(id + "번째 게시글이 삭제 되었습니다.");
+                }
+            } else if () {
+
             }
         }
 
