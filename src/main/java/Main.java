@@ -38,6 +38,19 @@ public class Main {
                         System.out.printf("%d / %s / %s\n", article.getId(), article.getTitle(), article.getContent());
                     }
                 }
+            } else if (command.equals("삭제")) {
+                System.out.printf("삭제 번호) ");
+                long id = Long.parseLong(sc.nextLine());
+
+                for (int i = 0; i < articleList.size(); i ++) {
+                    Article article = articleList.get(i);
+                    if (article.getId() == id) {
+                        articleList.remove(article);
+                        System.out.println(id + "번 게시글이 삭제 되었습니다.");
+                    } else {
+                        System.out.println("일치 하는 아이디가 없습니다");
+                    }
+                }
             }
         }
 
