@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -5,6 +7,7 @@ public class Main {
         System.out.println("== 프로그램 시작 ==");
 
         long lastId = 0;
+        List<Article> articleList = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
 
         while (true) {
@@ -22,8 +25,15 @@ public class Main {
                 String content = sc.nextLine();
 
                 Article article = new Article(lastId, title, content);
-
+                articleList.add(article);
+                
                 System.out.println(lastId + "번 게시글이 등록되었습니다.");
+            } else if (command.equals("목록")) {
+                if (articleList.size() == 0) {
+                    System.out.println("게시물이 없습니다.");
+                } else {
+
+                }
             }
         }
 
