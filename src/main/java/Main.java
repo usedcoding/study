@@ -10,6 +10,7 @@ public class Main {
         long lastId = 0;
         List<Article> articleList = new ArrayList<>();
         List<Member> memberList = new ArrayList<>();
+        Member loginedMember;
         Scanner sc = new Scanner(System.in);
 
         while (true) {
@@ -27,7 +28,7 @@ public class Main {
                 while (true) {
                     System.out.printf("아이디) ");
                     userId = sc.nextLine();
-                    boolean duplicatedUserId = alse;f
+                    boolean duplicatedUserId = false;
 
                     for (int i = 0; i < memberList.size(); i++) {
                         if (memberList.get(i).userId.equals(userId)) {
@@ -63,6 +64,36 @@ public class Main {
                 memberList.add(member);
 
                 System.out.println(userId + "님 회원가입이 완료되었습니다.");
+            } else if (command.equals("로그인")) {
+                boolean checkedUserId = false;
+                Member member = null;
+
+                System.out.printf("아이디) ");
+                String userId = sc.nextLine();
+                System.out.printf("비번) ");
+                String password = sc.nextLine();
+
+                for (int i = 0; i < memberList.size(); i++) {
+                    if (memberList.get(i).userId.equals(userId)) {
+                        member = memberList.get(i);
+                        checkedUserId = true;
+                        break;
+                    }
+                }
+
+                if (checkedUserId == false) {
+                    System.out.println("해당 회원이 존재하지 않습니다.");
+                    return;
+                }
+
+                if (member.password.equals(password) == false) {
+                    System.out.println("비밀번호가 일치하지 않습니다.");
+                    return;
+                }
+
+                loginedMember = member;
+
+                System.out.println("로그인 성공!" + loginedMember.userId +"님 환영합니다.");
             } else if (command.equals("등록")) {
                 lastId++;
                 System.out.printf("제목: ");
@@ -72,7 +103,7 @@ public class Main {
 
                 Article article = new Article(lastId, title, content);
                 articleList.add(article);
-                
+
                 System.out.println(lastId + "번 게시글이 등록되었습니다.");
             } else if (command.equals("목록")) {
                 if (articleList.size() == 0) {
@@ -90,7 +121,7 @@ public class Main {
 
                 long foundIndex = -1;
 
-                for (int i = 0; i < articleList.size(); i ++) {
+                for (int i = 0; i < articleList.size(); i++) {
                     Article article = articleList.get(i);
                     if (article.getId() == id) {
                         foundIndex = id;
@@ -110,7 +141,7 @@ public class Main {
 
                 long foundIndex = -1;
 
-                for (int i = 0; i < articleList.size(); i ++) {
+                for (int i = 0; i < articleList.size(); i++) {
                     Article article = articleList.get(i);
                     if (article.getId() == id) {
                         foundIndex = id;
