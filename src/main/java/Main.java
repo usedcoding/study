@@ -21,6 +21,8 @@ public class Main {
                 System.out.printf("내용: ");
                 String content = sc.nextLine();
 
+                Article article = new Article(lastId, title, content);
+
                 System.out.println(lastId + "번 게시글이 등록되었습니다.");
             }
         }
