@@ -27,13 +27,19 @@ public class Main {
                 while (true) {
                     System.out.printf("아이디) ");
                     userId = sc.nextLine();
+                    boolean duplicatedUserId = alse;f
 
                     for (int i = 0; i < memberList.size(); i++) {
                         if (memberList.get(i).userId.equals(userId)) {
-                            System.out.println("존재하는 아이디 입니다.");
-                            continue;
+                            duplicatedUserId = true;
                         }
                     }
+
+                    if (duplicatedUserId) {
+                        System.out.println("존재하는 아이디 입니다.");
+                        continue;
+                    }
+
                     break;
                 }
 
