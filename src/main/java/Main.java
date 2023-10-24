@@ -10,7 +10,7 @@ public class Main {
         long lastId = 0;
         List<Article> articleList = new ArrayList<>();
         List<Member> memberList = new ArrayList<>();
-        Member loginedMember;
+        Member loginedMember = null;
         Scanner sc = new Scanner(System.in);
 
         while (true) {
@@ -94,6 +94,15 @@ public class Main {
                 loginedMember = member;
 
                 System.out.println("로그인 성공!" + loginedMember.getUserId() +"님 환영합니다.");
+            } else if (command.equals("로그아웃")) {
+
+                if (loginedMember == null) {
+                    System.out.println("로그인 상태가 아닙니다.");
+                    continue;
+                }
+
+                loginedMember = null;
+                System.out.println("로그아웃 처리가 되었습니다.");
             } else if (command.equals("등록")) {
                 lastId++;
                 System.out.printf("제목: ");
